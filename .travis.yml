@@ -12,7 +12,7 @@ jdk:
 
 script:
   # - ./runSonarQubeAnalysis.sh
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.branch=master
 
 cache:
   directories:
