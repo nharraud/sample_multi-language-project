@@ -1,12 +1,18 @@
 language: java
 sudo: false
 install: true
+addons:
+  sonarcloud:
+    organization: "nharraud-github"
+    token:
+      secure: "IDNQ4gsIobpZzdEfLz7vQiRW4/GLGXoMSVIO4ToGJs2nbKYG/9tRYKjnTtIpF9XtBJ0j3gj9SzrsRAk/hdk9aRtsH8vr/uYtVc1sqYb2Q+/HRL1BH1ESdlvAN2Ssr9S3rxOCnQT4FgVV0fInLWewfr58LtFcr1YnNmuSOIuGMvxaapQ2Ep+mu1mwctEwdm8RDqvsbEeNBlvadq1dM65hKgtDA9lGff0lYVZnNJAzbhiTju9ltM71aibDS7uMdEEb4wNludP8G1CaUKqcwdtvd1BG+ni5TB94aMcODssbgnVXU4eh+igMY2cDQKr7r1EyNk+uwW4bOw4/kpu2pjMHXvGPoeP+rCXJS9r/RlKSHNHw4DjBq3E57hzPYy35hkGN+xP1FTffe9nUuh15nVDVSKg/IwNszUwlH2zsMKwBcLi6ZhVaSn+wBbz5EBXOuFboM5NN26ma/C+bdaD4ADGXhnicy1xVS3WuIv7BHEUN3j5Pao98ptK/NZ9uKiqfvqZEy+Ktkk6e2gWrLjaY0E5mV5Ub4lbdCulyNhvcnHbnxqDNCXdi3XVgB5PJuIr6WVTWpMy/+9L5xqd0lo8DygeHnuX1axJyqLsQDiJ9ZJa7selEGAxKs/kjKWbC6YolUzSoD+BgTmqh5INHBmnq3oaRIXuBkdP1vb/0HIOGqq0unLY="
 
 jdk:
   - oraclejdk8
 
 script:
-  - ./runSonarQubeAnalysis.sh
+  # - ./runSonarQubeAnalysis.sh
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.branch=master
 
 cache:
   directories:
